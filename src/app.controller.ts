@@ -1,7 +1,7 @@
-import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
-import { ApiOkResponse, ApiProperty } from '@nestjs/swagger';
-import { DbService } from './db/db.service';
+import { Controller, Get } from "@nestjs/common";
+import { AppService } from "./app.service";
+import { ApiOkResponse, ApiProperty } from "@nestjs/swagger";
+import { DbService } from "./db/db.service";
 
 class helloWorldDto {
   @ApiProperty()
@@ -20,7 +20,7 @@ export class AppController {
     type: helloWorldDto,
   })
   async getHello(): Promise<helloWorldDto> {
-    const users = await this.dbService.user.findFirst({});
+    const users = await this.dbService.user.findMany({});
     console.log(users);
     return { message: this.appService.getHello() };
   }
